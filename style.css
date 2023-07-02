@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:ital@0;1&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    display:flex;
+    margin:20px auto;
+    width:80%;
+    height:100px;
+    padding: 5px;
+    background-color: #a903fc;
+    color: white;
+    border-radius: 25px;
+}
+.header .tittle {
+            margin:35px auto 35px auto;
+            font-size: 30px;
+        }
+.container{
+    margin: 20px auto;
+    width:80%;
+    height:450px;
+    padding: 5px;
+    background-color: #a903fc;
+    color:white;
+    border-radius: 15px;
+}
+h2{
+    font-weight: bold;
+    font-size: 32px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+p{
+    font-size: 32px;
+    font-family: "Dancing script";
+}
+ul,li{
+    list-style: none;
+    margin: 16px;
+}
+ul{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+ul li a{
+    text-decoration: none;
+    color:black;
+    background: white;
+    display: block;
+    height:150px;
+    width: 150px;
+    padding:16px;
+    border-radius: 15px;
+    box-shadow:5px 5px 7px rgba(33,33,33,.7);
+    transition: transform .15s linear;
+}
+/*Here we use nth-child() to select the particular <li> to apply the animation properties*/
+ul li:nth-child(odd) a{
+    transform:rotate(-5deg);
+    position:relative;
+    top:5px;
+    background:greenyellow;
+}
+ul li:nth-child(even) a{
+    transform:rotate(5deg);
+    position:relative;
+    top:5px;
+    background: mediumseagreen;
+}
+ul li:nth-child(3n) a{
+    transform:rotate(-3deg);
+    position:relative;
+    top:5px;
+    background:rgb(248, 86, 213);
+}
+ul li:nth-child(5n) a{
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+    background: whitesmoke;
+}
+
+
+ul li a:hover{
+    box-shadow:10px 10px 7px rgba(33,33,33,.7);
+    transform:scale(1.50);
+    position: relative;
+    z-index: 5;
+}

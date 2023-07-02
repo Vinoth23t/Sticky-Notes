@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Sticky-notes">
+    <title>Sticky-notes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:ital@0;1&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="header">
+    <div class="tittle">
+    <i class="fas fa-sticky-note"></i> 
+    <span id="header">Sticky Notes</span>
+</div>
+</div>
+<div class="container">
+    <ul id ="notesList">
+        <li>
+            <a href="#" contenteditable="true">
+                <h2 id="title1">Title #1</h2>
+                <p id="content1">Text Content #1</p>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" contenteditable="true">
+                <h2 id="title2">Title #2</h2>
+                <p id="content2">Text Content #2</p>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" contenteditable="true">
+                <h2 id="title3">Title #3</h2>
+                <p id="content3">Text Content #3</p>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" contenteditable="true">
+                <h2 id="title4">Title #4</h2>
+                <p id="content4">Text Content #4</p>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" contenteditable="true">
+                <h2 id="title5">Title #5</h2>
+                <p id="content5">Text Content #5</p>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" contenteditable="true">
+                <h2 id="title6">Title #6</h2>
+                <p id="content6">Text Content #6</p>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" contenteditable="true">
+                <h2 id="title7">Title #7</h2>
+                <p id="content7">Text Content #7</p>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" contenteditable="true">
+                <h2 id="title8">Title #8</h2>
+                <p id="content8">Text Content #8</p>
+            </a>
+        </li>
+    </ul>
+</div>
+    <script>
+   // Here we use DOMContentLoaded to load the notes data whenever the page is getting loaded.
+    document.addEventListener("DOMContentLoaded", function() {
+    let allNotes = document.querySelectorAll("li a");
+
+  allNotes.forEach(function(note) {
+    note.addEventListener("keyup", function() { // save the note data in local storage using "keyup"(keyboard event for when the key is released after pressing)
+      let noteTitle = this.querySelector("h2").textContent;
+      let noteContent = this.querySelector("p").textContent;
+        // Generate a unique item key based on the note's index in the list
+      let itemKey = "list_" + Array.from(this.parentNode.parentNode.children).indexOf(this.parentNode);
+
+       // create a data obj with the note title and content
+      let data = {
+        title: noteTitle,
+        content: noteContent
+      };
+      // Store the data in local storage as a JSON string
+      window.localStorage.setItem(itemKey, JSON.stringify(data));
+    });
+  });
+  // Load the note data from local storage
+  allNotes.forEach(function(note, index) {
+    let data = JSON.parse(window.localStorage.getItem("list_" + index));// Retrieve the note data from local storage
+
+    if (data !== null) {// If data is found, update the note's title and content with the stored values
+      let noteTitle = data.title;
+      let noteContent = data.content;
+
+      note.querySelector("h2").textContent = noteTitle;
+      note.querySelector("p").textContent = noteContent;
+    }
+  });
+});
+
+
+    </script>
+</body>
+</html>
